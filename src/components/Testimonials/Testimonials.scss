@@ -1,54 +1,64 @@
-.testimonials{
+.testimonials {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     display: flex;
     -webkit-backface-visibility: hidden;
-    gap: 10px;
-    padding: 10px 5px;
+    gap: 14px;
+    padding: 14px 8px;
+    scroll-snap-type: x proximity;
 
-    &::-webkit-scrollbar{
-      width: 0px;
-      height: 0;
-      background: transparent;
-    }
+    &::-webkit-scrollbar { width: 0; height: 0; background: transparent; }
 
-    .testimonial{
+    .testimonial {
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 90vw;
-        min-width: 290px;
-        min-height: 120px;
-        background: var(--lite);
-        box-shadow: 0 0.05rem .1rem rgba(0, 0, 0, 0.15);
-        border: 0;
-        border: none;
-        padding: .5rem 0.5rem;
+        min-width: 300px;
+        min-height: 150px;
+        background: var(--surface);
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border);
+        padding: 18px 16px 44px;
         position: relative;
-        border-radius: 5px;
+        border-radius: var(--radius);
         text-align: center;
-        position: relative;
+        scroll-snap-align: start;
+        transition: var(--transition-smooth);
 
-        p{
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--grey);
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue);
         }
 
-        .user{
+        p {
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: var(--text-soft);
+            font-style: italic;
+        }
+
+        .user {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin: 10px 0;
             position: absolute;
-            bottom: 0;
-            *{
+            bottom: 12px;
+            left: 0;
+            padding: 0 16px;
+
+            * {
                 font-size: 14px;
                 font-weight: 600;
             }
-            .country{
+            .name { color: var(--blue); }
+            .country {
                 display: none;
+                color: var(--text-muted);
             }
         }
     }

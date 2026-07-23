@@ -1,89 +1,170 @@
 header {
     width: 100%;
-    height: 60px;
+    height: var(--nav-h);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 0 16px;
     position: fixed;
-    top: 35px;
-    z-index: 10;
-    background: var(--lite);
+    top: var(--topbar-h);
+    z-index: 100;
+    background: var(--surface);
     box-shadow: var(--shadow);
-    -webkit-box-shadow: var(--shadow);
-    -moz-box-shadow: var(--shadow);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
 
     .logo {
-        height: 55px;
-        min-width: 55px;
-        width: 55px;
+        height: 44px;
+        min-width: 44px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin: 0px 10px;
+        gap: 10px;
         cursor: pointer;
 
         img {
-            width: 100%;
-            height: 100%;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: fill;
             object-position: center;
+            box-shadow: var(--shadow-md);
         }
 
-        @media screen and (max-width:480px) {
-            & {
-                display: none;
-                padding: 6px 10px;
-            }
+        .brand {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--text);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
 
     nav {
-        width: 100%;
-        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
-        gap: 5px;
+        justify-content: center;
+        gap: 8px;
         position: relative;
 
-
-        >a {
+        > a {
             text-align: center;
             text-decoration: none;
-            color: var(--blue);
-            font-weight: 800;
-            font-size: 17px;
-            padding: 0 5px;
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: 15px;
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            transition: var(--transition-fast);
 
-            &:hover {
-                background: var(--light-blue);
-                transform: scale(1.2);
-                text-decoration: none;
+            &:hover, &.active {
+                background: var(--surface-2);
+                color: var(--blue);
             }
         }
 
-        .active {
-            color: var(--blue);
-            border-bottom: 2px solid var(--blue);
+        .btn-wrapper .btn {
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            box-shadow: var(--shadow-md);
+            padding: 9px 20px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-lg);
+            }
         }
     }
 
-    .btn-wrapper {
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
 
-        .btn {
-            box-shadow: none;
-            background: transparent;
-            color: var(--grey);
-            border: 1px solid var(--dark-blue);
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+
+            svg { font-size: 20px; }
 
             &:hover {
-                background: transparent;
-                color: var(--dark-blue);
-                box-shadow: none;
-                //border: 1px solid #023020;
-                background: var(--light-blue);
+                background: var(--blue);
+                color: #fff;
+                transform: rotate(20deg);
+                border-color: transparent;
             }
         }
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+
+            svg { font-size: 22px; }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .logo .brand { display: none; }
+
+        .actions .menu-toggle { display: flex; }
+
+        nav {
+            position: fixed;
+            top: calc(var(--topbar-h) + var(--nav-h));
+            right: -100%;
+            width: 75%;
+            max-width: 320px;
+            height: calc(100vh - var(--topbar-h) - var(--nav-h));
+            background: var(--surface);
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 24px 16px;
+            gap: 12px;
+            box-shadow: var(--shadow-lg);
+            border-left: 1px solid var(--border);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+
+            &.open { right: 0; }
+
+            > a {
+                width: 100%;
+                text-align: start;
+                padding: 14px 16px;
+                font-size: 17px;
+            }
+
+            .btn-wrapper {
+                width: 100%;
+                .btn { width: 100%; text-align: center; }
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        padding: 0 10px;
+        .logo img { width: 36px; height: 36px; }
     }
 }

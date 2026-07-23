@@ -1,106 +1,95 @@
-.faqItem{
-    border: 1px solid var(--light-color);
-    border-radius: 5px;
-    padding: 10px 5px;
+.faqItem {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
     position: relative;
     overflow: hidden;
-    margin: 1rem 1rem;
-    border-bottom: 1px solid #e5e5e5;
-    div{
+    margin: 12px 0;
+    background: var(--surface);
+    transition: var(--transition-fast);
+
+    &:hover {
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow);
+    }
+
+    div {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        h3{
-            margin: 0 35px 0 0;
-            //font-size: 1.5rem;
+
+        h3 {
+            margin: 0 40px 0 0;
             display: block;
             text-align: left;
             width: 100%;
-            color: var(--grey);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 16px;
         }
+
         .icon {
             display: inline-block;
             position: absolute;
-            top: 18px;
-            right: 0;
-            width: 22px;
-            height: 22px;
-            border: 1px solid;
-            border-radius: 22px;
+            top: 16px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--border-strong);
+            border-radius: 24px;
             cursor: pointer;
-            &::before{
+            color: var(--text-soft);
+            transition: var(--transition-fast);
+            &::before {
                 display: block;
                 position: absolute;
                 content: "";
-                top: 9px;
-                left: 5px;
+                top: 10px;
+                left: 6px;
                 width: 10px;
                 height: 2px;
                 background: currentColor;
             }
-            &::after{
+            &::after {
                 display: block;
                 position: absolute;
                 content: "";
-                top: 5px;
-                left: 9px;
+                top: 6px;
+                left: 10px;
                 width: 2px;
                 height: 10px;
                 background: currentColor;
-              }
-          }
-
-
-          .icon-opened {
-            display: inline-block;
-            position: absolute;
-            top: 18px;
-            right: 0;
-            width: 22px;
-            height: 22px;
-            border: 1px solid;
-            border-radius: 22px;
-            cursor: pointer;
-            &::before{
-                display: block;
-                position: absolute;
-                content: "";
-                top: 9px;
-                left: 5px;
-                width: 10px;
-                height: 2px;
-                background: currentColor;
             }
-          }
+        }
+
+        .icon-opened {
+            @extend .icon;
+            &::after { display: none; }
+        }
     }
-    p{
+
+    p {
         display: none;
-        margin: 30px 0 0;
-        margin: 2em 0;
+        margin: 1.6em 0 0;
+        color: var(--text-soft);
+        line-height: 1.6;
+        font-size: 15px;
     }
 
+    &.active {
+        box-shadow: var(--shadow-md);
+        border-color: var(--blue);
 
-    
-
-    &.active{
-        box-shadow: 0 3px 6px var(--box-shadow);
-        transition: 2s ease-in;
-        &::before, &::after{
+        &::before, &::after {
             color: var(--blue);
             content: '\f075';
             position: absolute;
-            opacity: 0.2;
-            top: 20px;
-            left: 20px;
+            opacity: 0.12;
+            top: 18px;
+            left: 18px;
             z-index: 0;
         }
 
-
-
-        p{
-            display: block;
-        }
+        p { display: block; }
     }
 }
-
-

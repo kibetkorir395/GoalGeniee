@@ -1,28 +1,26 @@
-.dialog{
-    width: 400px;
-    gap: 5px;
-    padding: 10px 5px;
-    background: var(--light-blue);
-    border-radius: 5px;
+.dialog {
+    width: min(420px, 92vw);
+    gap: 8px;
+    padding: 18px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    box-shadow: var(--shadow-lg);
 
-    .top{
+    .top {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
-        .error{
-            color: var(--even);
-        }
-        
-        .success{
-            color: var(--blue);
-        }
+        gap: 8px;
 
+        .error { color: var(--error); }
+        .success { color: var(--accent); }
     }
 }
