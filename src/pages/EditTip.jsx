@@ -116,7 +116,12 @@ export default function EditTip() {
                 </div>
                 <div className="input-container">
                     <label htmlFor="status">Status: </label>
-                    <input type="text" placeholder='finished/pending/live' id='status' value={status} onChange={(e) => setStatus(e.target.value.toLowerCase())} required />
+                    <select id='status' value={status} onChange={(e) => setStatus(e.target.value)} required>
+                        <option value="" disabled>Select status</option>
+                        <option value="pending">Pending</option>
+                        <option value="live">Live</option>
+                        <option value="finished">Finished</option>
+                    </select>
                 </div>
                 <div className="input-container">
                     <label htmlFor="time">Date/Time: </label>
@@ -128,7 +133,12 @@ export default function EditTip() {
                 </div>
                 <div className="input-container">
                     <label htmlFor="won">Is won</label>
-                    <input type="text" placeholder='won/pending/lost' id='won' value={won} onChange={(e) => setWon(e.target.value.toLowerCase())} required />
+                    <select id='won' value={won} onChange={(e) => setWon(e.target.value)} required>
+                        <option value="" disabled>Select result</option>
+                        <option value="pending">Pending</option>
+                        <option value="won">Won</option>
+                        <option value="lost">Lost</option>
+                    </select>
                 </div>
                 <div className="input-container">
                     <label htmlFor="premium">Is premium</label>

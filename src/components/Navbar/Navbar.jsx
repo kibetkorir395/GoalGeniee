@@ -8,10 +8,13 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { DarkMode, LightMode, Menu, Close } from '@mui/icons-material';
 
+const ADMIN_EMAILS = ['kkibetkkoir@gmail.com', 'arovanzgamez@gmail.com'];
+
 const Navbar1 = () => {
     const { currentUser } = useContext(AuthContext);
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [menuOpen, setMenuOpen] = useState(false);
+    const isAdmin = currentUser && ADMIN_EMAILS.includes(currentUser.email);
 
     const handleLogout = async () => {
         try {
@@ -32,6 +35,8 @@ const Navbar1 = () => {
             <nav className={menuOpen ? "open" : ""}>
                 <NavLink to="/" title='predictions' onClick={closeMenu} end>Home</NavLink>
                 <NavLink to="/about" title='about-us' onClick={closeMenu}>About</NavLink>
+                {isAdmin && <NavLink to="/admin/tips" title='add-tip' onClick={closeMenu}>Add Tips</NavLink>}
+                {isAdmin && <NavLink to="/users" title='all-users' onClick={closeMenu}>All Users</NavLink>}
                 <div className="btn-wrapper">
                     {currentUser ?
                         <NavLink className="btn" onClick={() => { handleLogout(); closeMenu(); }} title='signout'>Logout</NavLink> :

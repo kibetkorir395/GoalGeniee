@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, limit, query, updateDoc, where, orderBy, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -26,6 +26,12 @@ export const signInUser = (email, password, setError) => {
     setError(errorMessage);
   });
   return;
+}
+
+export const resetPassword = (email, setStatus, setError) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => setStatus(`A password reset link has been sent to ${email}. Please check your inbox (and spam folder).`))
+    .catch((error) => setError(error.message));
 }
 
 export const registerUser = (username, email, password, setSuccess, setError) => {
