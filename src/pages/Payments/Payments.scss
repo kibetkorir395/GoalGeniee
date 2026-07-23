@@ -278,29 +278,35 @@
     }
   }
 
-  .crypto-actions,
-  .full-width {
+  .generate-address-btn,
+  .check-status-btn {
+    flex: 1;
+    padding: 14px 16px;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    color: #fff;
+    letter-spacing: 0.3px;
+    &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); filter: brightness(1.06); }
+    &:active:not(:disabled) { transform: translateY(0); }
+    &:disabled { opacity: 0.6; cursor: not-allowed; }
+  }
+  .generate-address-btn { background: var(--gradient-accent); }
+  .check-status-btn { background: var(--gradient-primary); }
+
+  .crypto-actions {
     display: flex;
     gap: 10px;
     margin-top: 14px;
-    .generate-address-btn,
-    .check-status-btn {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      color: #fff;
-      &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-      &:disabled { opacity: 0.6; cursor: not-allowed; }
-    }
-    .generate-address-btn { background: var(--gradient-accent); }
-    .check-status-btn { background: var(--gradient-primary); }
   }
 
-  .full-width { width: 100%; display: flex; }
+  .generate-address-btn.full-width {
+    width: 100%;
+    margin-top: 14px;
+  }
 
   .polling-indicator {
     text-align: center;

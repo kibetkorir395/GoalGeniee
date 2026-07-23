@@ -3,7 +3,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from './AuthContext'
 import { db, getUser, updateUser } from "./firebase";
-import { getAuth } from "firebase/auth";
 
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader';
@@ -38,15 +37,6 @@ function App() {
       }
     }
   }, [loading]);
-
-  /*useEffect(() => {
-    const auth = getAuth();
-    const email = auth.currentUser?.email;
-    if (email) {
-      getUser(email, setUserData);
-    }
-    //currentUser && getUser(currentUser.email, setUserData)
-  }, [currentUser])*/
 
   useEffect(() => {
     const fetchUserDataWithRetry = async () => {
