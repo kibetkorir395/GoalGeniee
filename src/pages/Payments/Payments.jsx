@@ -2,11 +2,14 @@ import { useState, useCallback } from "react";
 import CryptoPayments from "./CryptoPayments";
 import PaypalPayments from "./PaypalPayments";
 import KoraPaymentsV1 from "./KoraPaymentsV1";
+import PaystackPaymentsV1 from "./PaystackPaymentsV1";
 import AppHelmet from "../../components/AppHelmet";
 import "./Payments.scss";
+import { useCurrency } from "../../CurrencyContext";
 
 export default function Payments({ setUserData }) {
   const [paymentType, setPaymentType] = useState("mpesa");
+  const { getCurrencyCode} = useCurrency();
 
   const handlePaymentChange = useCallback((e) => {
     setPaymentType(e.target.value);
@@ -22,9 +25,9 @@ export default function Payments({ setUserData }) {
       case "crypto":
         return <CryptoPayments key={key} setUserData={setUserData} />;
       case "mpesa":
-        return <KoraPaymentsV1 key={key} setUserData={setUserData} />;
+        return getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
       default:
-        return <KoraPaymentsV1 key={key} setUserData={setUserData} />;
+        return getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
     }
   }, [paymentType, setUserData]);
 
