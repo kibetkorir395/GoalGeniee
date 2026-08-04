@@ -1,8 +1,8 @@
 // pages/Payments/PaystackPaymentsV1.jsx
 import { useContext, useState, useEffect, useRef } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { usePrice } from "../../context/PriceContext";
-import { useCurrency } from "../../context/CurrencyContext.jsx";
+import { AuthContext } from "../../AuthContext";
+import { PriceContext } from "../../PriceContext";
+import { useCurrency } from "../../CurrencyContext.jsx";
 import Swal from "sweetalert2";
 import {
   SUBSCRIPTION_PLANS,
@@ -18,8 +18,8 @@ import "./Payments.scss";
 const API_BASE_URL = import.meta.env.VITE_PAYSTACK_API_BASE_URL;
 
 export default function PaystackPaymentsV1({ setUserData }) {
-  const { price, setPrice } = usePrice();
-  const { currentUser } = useAuth();
+  const { price, setPrice } = useContext(PriceContext);
+  const { currentUser } = useContext(AuthContext);
   const { 
     selectedCountry, 
     setSelectedCountry,
