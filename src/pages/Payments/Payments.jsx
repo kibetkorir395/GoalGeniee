@@ -3,6 +3,7 @@ import CryptoPayments from "./CryptoPayments";
 import PaypalPayments from "./PaypalPayments";
 import KoraPaymentsV1 from "./KoraPaymentsV1";
 import PaystackPaymentsV1 from "./PaystackPaymentsV1";
+import FlutterwavePayments from "./FlutterwavePayments";
 import AppHelmet from "../../components/AppHelmet";
 import "./Payments.scss";
 import { useCurrency } from "../../CurrencyContext";
@@ -25,9 +26,9 @@ export default function Payments({ setUserData }) {
       case "crypto":
         return <CryptoPayments key={key} setUserData={setUserData} />;
       case "mpesa":
-        return getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
+        return <KoraPaymentsV1 setUserData={setUserData}/>//getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
       default:
-        return getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
+        return <KoraPaymentsV1 setUserData={setUserData}/>//getCurrencyCode() === "KES" ? <PaystackPaymentsV1 setUserData={setUserData} /> : <KoraPaymentsV1 setUserData={setUserData} />;
     }
   }, [paymentType, setUserData]);
 
@@ -48,7 +49,7 @@ export default function Payments({ setUserData }) {
             />
             <label htmlFor="mpesa">Mobile Payments 📲</label>
           </fieldset>
-          <fieldset>
+          {/*<fieldset>
             <input
               name="payment-method"
               type="radio"
@@ -58,7 +59,7 @@ export default function Payments({ setUserData }) {
               onChange={handlePaymentChange}
             />
             <label htmlFor="paypal">PayPal 💳</label>
-          </fieldset>
+          </fieldset>*/}
           <fieldset>
             <input
               name="payment-method"

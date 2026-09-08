@@ -116,35 +116,35 @@ export default function Pricing() {
     const plans = [
         {
             id: 1,
-            title: "Silver",
+            title: "Daily Pass",
             price: 250,
             duration: "/Day",
             features: [
-                "Every day is game day! Check out our daily tips and win big!",
-                "Access 24 hours VIP predictions",
-                "Expert Football Predictions"
+                "24-hour full access to top match selections",
+                "High-confidence single and combo tips",
+                "Instant daily lock-ins before kickoff"
             ]
         },
         {
             id: 2,
-            title: "Gold",
+            title: "Weekly Advantage",
             price: 850,
             duration: "/Week",
             features: [
-                "Get the scoop on this week's matches",
-                "Enjoy a full week of VIP predictions",
-                "Weekly unbeatable football predictions!"
+                "7 days of full VIP prediction access",
+                "Comprehensive coverage of mid-week and weekend fixtures",
+                "Optimized betting strategies for steady growth"
             ]
         },
         {
             id: 3,
-            title: "Platinum",
+            title: "Monthly Pro",
             price: 3000,
             duration: "/Month",
             features: [
-                "Plan ahead with our monthly predictions.",
-                "Get unlimited VIP access for a month",
-                "Your winning streak starts here!"
+                "30 days of uninterrupted premium predictions",
+                "Maximum value and long-term yield consistency",
+                "Priority access to high-value rollover picks"
             ]
         }
     ];
